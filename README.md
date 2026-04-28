@@ -1,6 +1,6 @@
-# 🦞 AI Lobster Lab
+# 🤖 野人工作室
 
-This repository is the "nest" for the AI Lobster autonomous development loop.
+This repository is the "nest" for the 野人工作室 autonomous development loop.
 
 ## ⚙️ Workflow
 1. **Request**: Create a GitHub Issue with tag `lobster-task`.

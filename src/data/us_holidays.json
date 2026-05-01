@@ -1,0 +1,17 @@
+{
+  "fixed": {
+    "01-01": "New Year's Day",
+    "06-19": "Juneteenth",
+    "07-04": "Independence Day",
+    "11-11": "Veterans Day",
+    "12-25": "Christmas Day"
+  },
+  "variable": {
+    "MLK": "Martin Luther King Jr. Day",
+    "Presidents": "Presidents' Day",
+    "Memorial": "Memorial Day",
+    "Labor": "Labor Day",
+    "Columbus": "Columbus Day",
+    "Thanksgiving": "Thanksgiving Day"
+  }
+}

@@ -39,10 +39,9 @@ export const getHolidayInfo = (date: Date): HolidayInfo | null => {
   const lunar = solar.getLunar();
   
   // Use lunar-javascript to check for major festivals
-  // Note: lunar.getFestival() returns the festival name if it's a festival day
-  const festival = lunar.getFestival();
-  if (festival) {
-    cnHoliday = festival;
+  const festivals = lunar.getFestivals();
+  if (festivals && festivals.length > 0) {
+    cnHoliday = festivals[0];
   }
 
   // --- US Holidays ---
@@ -69,8 +68,8 @@ export const getHolidayInfo = (date: Date): HolidayInfo | null => {
     if (monthIdx === 10 && dayOfWeek === 4 && day > 21 && day <= 28) usHoliday = usHolidays.variable.Thanksgiving;
   }
 
-  if (cnHoliday && usHoliday) return { name: `${cnHoliday} / ${usHoliday}`, type: 'BOTH', isLunar: lunar.isFestival() };
-  if (cnHoliday) return { name: cnHoliday, type: 'CN', isLunar: lunar.isFestival() };
+  if (cnHoliday && usHoliday) return { name: `${cnHoliday} / ${usHoliday}`, type: 'BOTH', isLunar: festivals && festivals.length > 0 };
+  if (cnHoliday) return { name: cnHoliday, type: 'CN', isLunar: festivals && festivals.length > 0 };
   if (usHoliday) return { name: usHoliday, type: 'US', isLunar: false };
 
   return null;

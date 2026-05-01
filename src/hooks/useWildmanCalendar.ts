@@ -20,7 +20,7 @@ export const useWildmanCalendar = (selectedDate: Date) => {
         month: lunar.getMonth(),
         day: lunar.getDay(),
         year: lunar.getYearInGanZhi(),
-        festival: lunar.getFestival(),
+        festival: lunar.getFestivals()[0] || '',
       },
     };
   }, [selectedDate]);

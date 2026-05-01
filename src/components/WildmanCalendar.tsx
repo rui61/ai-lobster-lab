@@ -28,7 +28,7 @@ const WildmanCalendar: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-wildman-bg text-white">
+    <div className="flex flex-col items-center justify-start min-h-screen p-4 pt-12 bg-wildman-bg text-white">
       <div className="w-full max-w-4xl bg-wildman-card p-8 rounded-3xl border border-slate-700 shadow-2xl">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
           <div className="flex items-center gap-4">

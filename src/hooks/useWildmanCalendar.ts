@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react';
-import { getHolidayInfo, HolidayInfo } from '../utils/lunar_engine';
-import { Solar, Lunar } from 'lunar-javascript';
+import { useMemo } from 'react';
+import { getHolidayInfo } from '../utils/lunar_engine';
+import { Solar } from 'lunar-javascript';
 
 export const useWildmanCalendar = (selectedDate: Date) => {
   const holiday = useMemo(() => getHolidayInfo(selectedDate), [selectedDate]);

@@ -1,6 +1,5 @@
-import { Solar, Lunar } from 'lunar-javascript';
+import { Solar } from 'lunar-javascript';
 import usHolidays from '../data/us_holidays.json';
-import { getDay, getMonth, getDate, format } from 'date-fns';
 
 export type HolidayType = 'CN' | 'US' | 'BOTH';
 
@@ -48,7 +47,8 @@ export const getHolidayInfo = (date: Date): HolidayInfo | null => {
 
   // --- US Holidays ---
   // Fixed Solar
-  usHoliday = usHolidays.fixed[dateStr] || null;
+  const usFixed = usHolidays.fixed as Record<string, string>;
+  usHoliday = usFixed[dateStr] || null;
 
   // Variable US Holidays (Simplified calculation for this component)
   if (!usHoliday) {

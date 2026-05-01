@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
 import { useWildmanCalendar } from '../hooks/useWildmanCalendar';
-import { HolidayType } from '../utils/lunar_engine';
+import { getHolidayInfo } from '../utils/lunar_engine';
 
 type DisplayMode = 'CN' | 'US' | 'BOTH';
 
@@ -75,7 +75,7 @@ const WildmanCalendar: React.FC = () => {
         </div>
 
         <div className="mt-8 p-6 bg-slate-900/50 rounded-2xl border border-slate-800">
-          <CalendarDetails date={selectedDate} mode={mode} />
+          <CalendarDetails date={selectedDate} />
         </div>
       </div>
     </div>
@@ -84,11 +84,9 @@ const WildmanCalendar: React.FC = () => {
 
 const DayCell: React.FC<{ day: Date, selectedDate: Date, setSelectedDate: (d: Date) => void, mode: DisplayMode }> = ({ day, selectedDate, setSelectedDate, mode }) => {
   // We use the logic engine directly here for performance
-  const { getHolidayInfo } = require('../utils/lunar_engine');
   const holiday = getHolidayInfo(day);
   
   const isSelected = isSameDay(day, selectedDate);
-  const isCurrentMonth = day.getMonth() === new Date().getMonth() && day.getFullYear() === new Date().getFullYear();
   
   let bgColor = 'bg-slate-800/40';
   let textColor = 'text-slate-400';
@@ -139,8 +137,8 @@ const DayCell: React.FC<{ day: Date, selectedDate: Date, setSelectedDate: (d: Da
   );
 };
 
-const CalendarDetails: React.FC<{ date: Date, mode: DisplayMode }> = ({ date, mode }) => {
-  const { solar, lunar, holiday, isHoliday } = useWildmanCalendar(date);
+const CalendarDetails: React.FC<{ date: Date }> = ({ date }) => {
+  const { lunar, holiday, isHoliday } = useWildmanCalendar(date);
 
   return (
     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">

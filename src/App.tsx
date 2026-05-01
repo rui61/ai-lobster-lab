@@ -1,4 +1,3 @@
-import React from 'react';
 import WildmanCalendar from './components/WildmanCalendar';
 import './index.css';
 
